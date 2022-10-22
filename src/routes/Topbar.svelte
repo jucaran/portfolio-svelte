@@ -38,7 +38,7 @@
   <a
     id="contact_btn"
     class="text-primary hover:text-secondary transition-all duration-300 flex gap-1 items-center"
-    href="contact.html"
+    href="/contact"
   >
     <span class="text-sm">Escríbeme!</span>
     <span class="icon-message-circle" />
@@ -46,10 +46,7 @@
 </nav>
 
 <style>
-  .material-symbols-outlined {
-    font-size: 1.75rem;
-  }
-  .btn_text {
+  span {
     font-family: "Space mono", monospace;
   }
 </style>

@@ -1,22 +1,3 @@
-/* I added this to solve a safari bug */
-.background {
-  z-index: -10;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  transition: 0.3s;
-}
-
-.background.dark { 
-  background-color: var(--light-black);
-}
-
-.dark p {
-  color: #e8e8e8;
-}
-
 .canvas_wrapper {
   z-index: -10;
 }
