@@ -1,22 +1,29 @@
 <script>
+  // @ts-nocheck
+
   import Loading from '$lib/components/Loading.svelte'
+  import { enhance } from '$app/forms'
 
   let name = ''
   let email = ''
   let message = ''
   let isLoading = false
   let mailSent = false
+  let mailError = false
 
-  const onSubmit = async () => {
-    console.log(name, email, message)
+  console.log(import.meta.env.VITE_SENDGRID_KEY)
 
-    const response = await fetch('/contact/send', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, email, message })
-    })
+  const handleSubmit = () => {
+    isLoading = true
+    return ({ result }) => {
+      console.log('result', result)
+      if (result.error) {
+        mailError = true
+      } else {
+        mailSent = true
+      }
+      isLoading = false
+    }
   }
 </script>
 
@@ -24,7 +31,13 @@
   <title>Juan Castro Arancibia | Contacto</title>
 </svelte:head>
 
-<main class="ubuntu selection:bg-secondary selection:text-light-black">
+<main
+  class="
+    ubuntu transition-all duration-300
+    w-screen h-screen 
+    bg-white dark:bg-light-black
+     selection:bg-secondary selection:text-light-black"
+>
   <div
     class="
       bg-secondary
@@ -64,6 +77,15 @@
         </h2>
         <Loading />
       </div>
+    {:else if mailError}
+      <div class="block relative text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <h2
+          id="api_response"
+          class="ubuntu text-3xl sm:text-5xl font-bold text-light-color text-center"
+        >
+          Hubo un error al enviar el mail :(
+        </h2>
+      </div>
     {:else if mailSent}
       <div class="block relative text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <h2
@@ -74,10 +96,10 @@
         </h2>
       </div>
     {:else}
-      <section class="form_container">
+      <section>
         <form
           method="POST"
-          on:submit|preventDefault={onSubmit}
+          use:enhance={handleSubmit}
           class="
             absolute text-light-color
             w-[90vw] sm:w-[70vw] max-w-lg
@@ -120,7 +142,6 @@
               "
               name="email"
               placeholder="Su email..."
-              type="email"
             />
           </div>
           <div class="flex flex-col items-start w-11/12 sm:w-4/5">
