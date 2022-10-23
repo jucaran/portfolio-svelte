@@ -23,11 +23,11 @@
   }
 </script>
 
-<nav class="fixed top-5 right-5 flex items-center gap-5 z-20 text-2xl">
-  <img class="h-[1.5rem] cursor-pointer" src={languageIcon} alt="Change language" />
+<nav class="fixed top-5 right-3 sm:right-5 flex items-center sm:gap-5 z-20 text-[2rem] sm:text-2xl">
+  <img class="h-7 sm:h-6 cursor-pointer" src={languageIcon} alt="Change language" />
   <button
     on:click={toggleMode}
-    class="text-primary hover:text-secondary flex transition-all duration-300"
+    class="ml-2 sm:ml-0 text-primary hover:text-secondary flex transition-all duration-300"
   >
     {#if theme == 'dark'}
       <span class="icon-sun light_icon" />
@@ -37,10 +37,10 @@
   </button>
   <a
     id="contact_btn"
-    class="text-primary hover:text-secondary transition-all duration-300 flex gap-1 items-center"
+    class="ml-1 sm:ml-0 text-primary hover:text-secondary flex items-center transition-all duration-300"
     href="/contact"
   >
-    <span class="text-sm">Escríbeme!</span>
+    <span class="hidden sm:block text-sm">Escríbeme!</span>
     <span class="icon-message-circle" />
   </a>
 </nav>

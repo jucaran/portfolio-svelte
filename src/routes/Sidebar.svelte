@@ -20,7 +20,7 @@
 />
 <nav
   class={`
-		z-20 w-[30vw] min-w-[200px] h-screen fixed
+		z-50 w-[30vw] min-w-[200px] h-screen fixed
 		bg-dark-color text-white
 		top-0 ${active ? 'left-0' : '-left-full'}
 		flex justify-center

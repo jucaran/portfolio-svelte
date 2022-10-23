@@ -7,7 +7,7 @@
 <section
   class="
   w-screen h-screen
-  flex justify-center 
+  flex sm:justify-center 
   flex-col sm:flex-row 
   items:center sm:items-start
   pt-[10vh]
@@ -78,7 +78,7 @@
           cta ubuntu font-bold
           cursor-pointer relative 
           bg-primary text-sm text-white
-          my-4 sm:my-0 p-[8px] mr-4 rounded-[5px]
+          my-4 sm:my-0 p-[8px] sm:mr-4 rounded-[5px]
           border-[1px]
           border-primary-dark sm:border-transparent hover:border-white
         "
@@ -92,7 +92,7 @@
           cta-2 ubuntu font-bold
           cursor-pointer relative 
           bg-secondary text-sm text-white
-          my-4 sm:my-0 p-[8px] mr-4 rounded-[5px]
+          my-4 sm:my-0 p-[8px] sm:mr-4 rounded-[5px]
           border-[1px]
           border-secondary-dark sm:border-transparent hover:border-white
         "
