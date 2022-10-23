@@ -1,15 +1,23 @@
-import * as sendgrid from '@sendgrid/mail'
+import nodemailer from 'nodemailer'
 import { SECRET_SENDGRID_KEY } from '$env/static/private'
 import type { Actions } from '@sveltejs/kit'
 
 export const actions: Actions = {
   default: async ({ request }) => {
-    sendgrid.setApiKey(SECRET_SENDGRID_KEY)
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.sendgrid.net',
+      port: 587,
+      secure: false,
+      auth: {
+        user: 'apikey',
+        pass: SECRET_SENDGRID_KEY
+      }
+    })
 
     const form = await request.formData()
     const msg = {
       to: 'juan.castro.arancibia@gmail.com',
-      from: 'portfolio@jucaran.ar',
+      from: 'Portfolio <portfolio@jucaran.ar>',
       subject: 'Nuevo mensaje del portfolio!',
       html: `
       <!DOCTYPE html>
@@ -45,35 +53,12 @@ export const actions: Actions = {
             </p>
           </div>
         </body>
-      </html>`,
+      </html>`
     }
-    const response = await sendgrid.send(msg)
-    console.log("Mail response: ", response);
+    const response = await transporter.sendMail(msg)
+    console.log('Mail response: ', response)
     return {
       success: true
     }
   }
 }
-
-// //ES6
-// sgMail
-//   .send(msg)
-//   .then(() => {}, error => {
-//     console.error(error);
-
-//     if (error.response) {
-//       console.error(error.response.body)
-//     }
-//   });
-// //ES8
-// (async () => {
-//   try {
-//     await sgMail.send(msg);
-//   } catch (error) {
-//     console.error(error);
-
-//     if (error.response) {
-//       console.error(error.response.body)
-//     }
-//   }
-// })();

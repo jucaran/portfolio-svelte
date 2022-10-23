@@ -139,6 +139,7 @@
                 border-2 border-transparent focus:border-secondary
               "
               name="email"
+              type="email"
               placeholder="Su email..."
             />
           </div>
