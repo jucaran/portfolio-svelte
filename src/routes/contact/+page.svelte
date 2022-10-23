@@ -78,11 +78,22 @@
     {:else if mailError}
       <div class="block relative text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <h2
-          id="api_response"
-          class="ubuntu text-3xl sm:text-5xl font-bold text-light-color text-center"
+          class="ubuntu mb-4 text-3xl sm:text-5xl font-bold text-light-color text-center"
         >
           Hubo un error al enviar el mail :(
         </h2>
+        <button
+          class="
+          p-4 mt-2 w-4/5 text-lg text-light-color
+          bg-primary hover:bg-primary-light focus:bg-primary-dark
+          rounded-md shadow-md hover:shadow-lg
+          transition-all duration-200
+          font-bold tracking-wide
+        "
+          on:click={() => mailError = false}
+        >
+          INTENTAR NUEVAMENTE
+        </button>
       </div>
     {:else if mailSent}
       <div class="block relative text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -162,7 +173,6 @@
           </div>
           <button
             class="
-              space-mono
               p-4 mt-2 w-4/5 text-lg text-light-color
               bg-primary hover:bg-primary-light focus:bg-primary-dark
               rounded-md shadow-md hover:shadow-lg
