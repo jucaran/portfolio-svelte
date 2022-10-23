@@ -118,7 +118,7 @@
               class="
                 mt-2 p-3 w-full text-gray-600
                 bg-light-color focus:bg-white
-                transition-all duration-200
+                transition-all duration-300
                 shadow-md outline-none rounded-md
                 border-2 border-transparent focus:border-secondary
               "
@@ -134,7 +134,7 @@
               class="
                 mt-2 p-3 w-full text-gray-600
                 bg-light-color focus:bg-white
-                transition-all duration-200
+                transition-all duration-300
                 shadow-md outline-none rounded-md
                 border-2 border-transparent focus:border-secondary
               "
@@ -149,7 +149,7 @@
               class="
                 mt-2 p-3 w-full text-gray-600
                 bg-light-color focus:bg-white
-                transition-all duration-200
+                transition-all duration-300
                 shadow-md outline-none rounded-md
                 border-2 border-transparent focus:border-secondary
               "
