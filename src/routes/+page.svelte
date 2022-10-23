@@ -1,17 +1,20 @@
 <script>
+  import Bubbles from './home/Bubbles.svelte'
   import Character from './home/Character.svelte'
 </script>
 
 <!-- Home content -->
 <section
   class="
+  w-screen h-screen
   flex justify-center 
   flex-col sm:flex-row 
   items:center sm:items-start
-  mt-[10vh]
+  pt-[10vh]
   "
 >
-  <div class="sm:ml-10 flex justify-center">
+  <Bubbles />
+  <div class="sm:ml-10 lg:ml-0 flex justify-center bg-opacity-0">
     <div
       class="
       absolute bg-secondary top-0 h-screen
@@ -58,9 +61,11 @@
     </div>
     <p
       class="
-        hidden sm:block sm:w-[50vw] space-mono mb-8 leading-8
-        selection:text-white selection:bg-primary
-      "
+          z-40
+          dark:text-white
+          hidden sm:block sm:w-[50vw] lg:w-full space-mono mb-8 leading-8
+          selection:text-white selection:bg-primary
+        "
     >
       Desde que era muy chico siempre me gusto jugar creando cosas. Empecé a usar Photoshop cuando
       tenía 13 y cree mi primer web con HTML y CSS cuando tenia 15. Después empecé a aprender

@@ -23,7 +23,7 @@
   }
 </script>
 
-<nav class="fixed top-5 right-5 flex items-center gap-5 z-10 text-2xl">
+<nav class="fixed top-5 right-5 flex items-center gap-5 z-20 text-2xl">
   <img class="h-[1.5rem] cursor-pointer" src={languageIcon} alt="Change language" />
   <button
     on:click={toggleMode}
