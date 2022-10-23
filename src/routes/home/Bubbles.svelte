@@ -85,4 +85,4 @@
   })
 </script>
 
-<canvas class="bg-white dark:bg-light-black fixed top-0 left-0 w-screen h-screen pointer-events-none" id="canvas" bind:this={canvas} />
+<canvas class="bg-white dark:bg-light-black transition-all duration-300 fixed top-0 left-0 w-screen h-screen pointer-events-none" id="canvas" bind:this={canvas} />
