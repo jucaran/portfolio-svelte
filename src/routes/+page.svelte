@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Juan Castro Arancibia | Software Engineer UX/UI Designer</title>
+</svelte:head>
+
 <script>
   import Bubbles from './home/Bubbles.svelte'
   import Character from './home/Character.svelte'
