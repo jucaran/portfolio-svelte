@@ -11,8 +11,6 @@
   let mailSent = false
   let mailError = false
 
-  console.log(import.meta.env.VITE_SENDGRID_KEY)
-
   const handleSubmit = () => {
     isLoading = true
     return ({ result }) => {
