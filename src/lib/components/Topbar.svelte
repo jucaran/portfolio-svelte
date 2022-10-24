@@ -1,21 +1,22 @@
 <script lang="ts">
   import { browser } from '$app/environment'
   import languageIcon from '$lib/media/language.svg'
+  import { theme } from '../stores';
 
-  let theme: 'dark' | 'light' | null
+  // let theme: 'dark' | 'light' | null
   if (browser) {
-    theme = localStorage?.theme
+    theme.set(localStorage?.theme)
   }
   const toggleMode = () => {
-    if (theme == 'dark') {
+    if ($theme == 'dark') {
       document.documentElement.classList.remove('dark')
-      theme = 'light'
+      theme.set('light')
       if (browser) {
         localStorage?.setItem('theme', 'light')
       }
     } else {
       document.documentElement.classList.add('dark')
-      theme = 'dark'
+      theme.set('dark')
       if (browser) {
         localStorage?.setItem('theme', 'dark')
       }
@@ -29,7 +30,7 @@
     on:click={toggleMode}
     class="ml-2 sm:ml-0 text-primary hover:text-secondary flex transition-all duration-300"
   >
-    {#if theme == 'dark'}
+    {#if $theme == 'dark'}
       <span class="icon-sun light_icon" />
     {:else}
       <span class="icon-moon dark_icon" />

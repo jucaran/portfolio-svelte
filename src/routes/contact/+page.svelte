@@ -11,15 +11,33 @@
   let mailSent = false
   let mailError = false
 
-  const handleSubmit = () => {
+  let inputsErrors = {
+    name: false,
+    email: false,
+    message: false
+  }
+
+  const handleSubmit = ({ form, data, action, cancel }) => {
     isLoading = true
+    const errors = {}
+    if (data.get('email') == '') errors.email = true
+    else errors.email = false
+    if (data.get('name') == '') errors.name = true
+    else errors.name = false
+    if (data.get('message') == '') errors.message = true
+    else errors.message = false
+
+    if (Object.keys(errors).some((x) => !x)) {
+      inputsErrors = { ...inputsErrors, ...errors }
+      console.log(inputsErrors)
+      isLoading = false
+      cancel()
+    }
+
     return ({ result }) => {
       console.log('result', result)
-      if (result.error) {
-        mailError = true
-      } else {
-        mailSent = true
-      }
+      if (result.error) mailError = true
+      else mailSent = true
       isLoading = false
     }
   }
@@ -63,7 +81,8 @@
       w-[95vw] sm:w-[70vw] max-w-lg min-w-[300px]
       h-[80vh] sm:h-[90vh] max-h-[700px]
       rounded-3xl
-      left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+      left-1/2 -translate-x-1/2
+      top-[4.5rem] md:top-1/2 md:-translate-y-1/2
       flex flex-col
     "
   >
@@ -76,9 +95,7 @@
       </div>
     {:else if mailError}
       <div class="block relative text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <h2
-          class="ubuntu mb-4 text-3xl sm:text-5xl font-bold text-light-color text-center"
-        >
+        <h2 class="ubuntu mb-4 text-3xl sm:text-5xl font-bold text-light-color text-center">
           Hubo un error al enviar el mail :(
         </h2>
         <button
@@ -89,7 +106,7 @@
           transition-all duration-200
           font-bold tracking-wide
         "
-          on:click={() => mailError = false}
+          on:click={() => (mailError = false)}
         >
           INTENTAR NUEVAMENTE
         </button>
@@ -125,50 +142,65 @@
             <label for="name">Nombre:</label>
             <input
               bind:value={name}
-              class="
+              class={`
                 mt-2 p-3 w-full text-gray-600
                 bg-light-color focus:bg-white
                 transition-all duration-300
                 shadow-md outline-none rounded-md
-                border-2 border-transparent focus:border-secondary
-              "
+                border-2 ${
+                  inputsErrors.name ? 'border-red-400' : 'border-transparent'
+                } focus:border-secondary
+              `}
               name="name"
               placeholder="Su nombre..."
               type="text"
             />
+            {#if inputsErrors.name}
+              <span class="text-red-400 p-1">No olvides tu nombre!</span>
+            {/if}
           </div>
           <div class="flex flex-col items-start w-11/12 sm:w-4/5">
             <label for="email">Email:</label>
             <input
               bind:value={email}
-              class="
+              class={`
                 mt-2 p-3 w-full text-gray-600
                 bg-light-color focus:bg-white
                 transition-all duration-300
                 shadow-md outline-none rounded-md
-                border-2 border-transparent focus:border-secondary
-              "
+                border-2 ${
+                  inputsErrors.email ? 'border-red-400' : 'border-transparent'
+                } focus:border-secondary
+              `}
               name="email"
               type="email"
               placeholder="Su email..."
             />
+            {#if inputsErrors.email}
+              <span class="text-red-400 p-1">No olvides tu email!</span>
+            {/if}
           </div>
           <div class="flex flex-col items-start w-11/12 sm:w-4/5">
             <label for="message">Mensaje:</label>
             <textarea
               bind:value={message}
-              class="
+              class={`
                 mt-2 p-3 w-full text-gray-600
                 bg-light-color focus:bg-white
                 transition-all duration-300
                 shadow-md outline-none rounded-md
-                border-2 border-transparent focus:border-secondary
-              "
+                border-2 ${
+                  inputsErrors.message ? 'border-red-400' : 'border-transparent'
+                } focus:border-secondary
+              `}
               name="message"
               placeholder="Su mensaje..."
               rows="5"
               cols="15"
             />
+            {#if inputsErrors.message}
+              <span class="text-red-400 p-1">No olvides tu mensaje!</span>
+            {/if}
           </div>
           <button
             class="
