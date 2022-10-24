@@ -3,7 +3,6 @@
 </svelte:head>
 
 <script>
-  import Bubbles from './home/Bubbles.svelte'
   import Character from './home/Character.svelte'
 </script>
 
@@ -17,7 +16,6 @@
   pt-[10vh]
   "
 >
-  <Bubbles />
   <div class="sm:ml-10 lg:ml-0 flex justify-center bg-opacity-0">
     <div
       class="
@@ -65,7 +63,6 @@
     </div>
     <p
       class="
-          z-40
           dark:text-white
           hidden sm:block sm:w-[50vw] lg:w-full space-mono mb-8 leading-8
           selection:text-white selection:bg-primary

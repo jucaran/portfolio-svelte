@@ -33,7 +33,6 @@
   class="
     ubuntu transition-all duration-300
     w-screen h-screen 
-    bg-white dark:bg-light-black
      selection:bg-secondary selection:text-light-black"
 >
   <div
