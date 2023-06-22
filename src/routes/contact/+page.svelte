@@ -118,11 +118,11 @@
           {texts[$lang]?.contact.try}
         </button>
       </div>
-    {:else if mailSent}
+    {:else if true}
       <div class="block relative text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <h2
           id="api_response"
-          class="ubuntu text-3xl sm:text-5xl font-bold text-light-color text-center"
+          class="ubuntu text-3xl px-4 sm:text-5xl font-bold text-light-color text-center"
         >
           {texts[$lang]?.contact.success}
         </h2>
