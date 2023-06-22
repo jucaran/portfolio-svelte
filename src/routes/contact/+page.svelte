@@ -51,7 +51,7 @@
 </script>
 
 <svelte:head>
-  <title>Juan Castro Arancibia | Contacto</title>
+  <title>Juan Castro Arancibia | {texts[$lang]?.contact.title}</title>
 </svelte:head>
 
 <main

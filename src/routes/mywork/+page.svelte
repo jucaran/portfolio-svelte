@@ -1,57 +1,10 @@
 <script>
-  // @ts-nocheck
-
-  import Loading from '$lib/components/Loading.svelte'
-  import { enhance } from '$app/forms'
   import texts from '$lib/texts.json'
   import { lang } from '$lib/stores'
-
-  let name = ''
-  let email = ''
-  let message = ''
-  let isLoading = false
-  let mailSent = false
-  let mailError = false
-
-  let inputsErrors = {
-    name: false,
-    email: false,
-    message: false
-  }
-
-  const handleSubmit = ({ form, data, action, cancel }) => {
-    const mailRegex =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-    isLoading = true
-    const errors = {}
-
-    if (data.get('email') == '' || !mailRegex.test(data.get('email'))) errors.email = true
-    else errors.email = false
-
-    if (data.get('name') == '') errors.name = true
-    else errors.name = false
-
-    if (data.get('message') == '') errors.message = true
-    else errors.message = false
-
-    if (Object.keys(errors).some((x) => errors[x])) {
-      inputsErrors = { ...inputsErrors, ...errors }
-      console.log(inputsErrors)
-      isLoading = false
-      cancel()
-    }
-
-    return ({ result }) => {
-      console.log('result', result)
-      if (result.error) mailError = true
-      else mailSent = true
-      isLoading = false
-    }
-  }
 </script>
 
 <svelte:head>
-  <title>Juan Castro Arancibia | Contacto</title>
+  <title>Juan Castro Arancibia | {texts[$lang]?.work.title}</title>
 </svelte:head>
 
 <main

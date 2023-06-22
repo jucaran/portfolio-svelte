@@ -2,7 +2,7 @@
   import { browser } from '$app/environment'
   import languageIcon from '$lib/media/language.svg'
   import { theme, lang } from '../stores'
-  import texts from "../texts.json"
+  import texts from '$lib/texts.json'
 
   // let theme: 'dark' | 'light' | null
   if (browser) {
@@ -38,10 +38,11 @@
 </script>
 
 <nav class="fixed top-5 right-3 sm:right-5 flex items-center sm:gap-5 z-20 text-[2rem] sm:text-2xl">
-  <button on:click={toggleLanguage}>
+  <button aria-label="Language toggle" on:click={toggleLanguage}>
     <img class="h-7 sm:h-6 cursor-pointer" src={languageIcon} alt="Change language" />
   </button>
   <button
+    aria-label="Theme toggle"
     on:click={toggleTheme}
     class="ml-2 sm:ml-0 text-primary hover:text-secondary flex transition-all duration-300"
   >
@@ -53,10 +54,11 @@
   </button>
   <a
     id="contact_btn"
+    aria-label="Contact"
     class="ml-1 sm:ml-0 text-primary hover:text-secondary flex items-center transition-all duration-300"
     href="/contact"
   >
-    <span class="hidden sm:block text-sm">{texts[$lang]?.topbar.contact}</span>
+    <span aria-label="Contact" class="hidden sm:block text-sm">{texts[$lang]?.topbar.contact}</span>
     <span class="icon-message-circle" />
   </a>
 </nav>

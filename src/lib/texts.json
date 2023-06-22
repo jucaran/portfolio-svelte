@@ -15,6 +15,7 @@
       "work_cta": "MIRÁ MI TRABAJO"
     },
     "work": {
+      "title": "Mi trabajo",
       "building": "Por favor, disculpa las molestias, estamos desarrollando esta página",
       "projects": [
         "Tienda de cremas faciales, velas e indumentaria. Diseño del branding y desarrollo web responsive.",
@@ -56,6 +57,9 @@
       "error": "Hubo un error al enviar el mail 😔",
       "try": "INTENTAR NUEVAMENTE",
       "success": "Gracias! Tu mensaje fue enviado correctamente"
+    },
+    "meta": {
+      "description": "Juan Castro Arancibia, desarrollador de software."
     }
   },
   "en": {
@@ -74,6 +78,7 @@
       "work_cta": "CHECK MY WORK"
     },
     "work": {
+      "title": "My work",
       "building": "Please bear with us as we develop this page",
       "projects": [
         "Cosmetics, creams, candles and clothing store. I've worked in the branding design and in the responsive web development.",
@@ -105,6 +110,9 @@
       "error": "There was an error sending your message 😔",
       "try": "TRY AGAIN",
       "success": "Thanks! Your message was delivered"
+    }, 
+    "meta": {
+      "description": "Juan Castro Arancibia, Software Developer."
     }
   }
 }

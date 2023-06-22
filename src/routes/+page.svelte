@@ -6,6 +6,7 @@
 
 <svelte:head>
   <title>Juan Castro Arancibia | Software Engineer UX/UI Designer</title>
+  <meta name="description" content={texts[$lang]?.meta.description}>
 </svelte:head>
 
 <!-- Home content -->
@@ -60,7 +61,7 @@
         mb-4 sm:mb-8
         "
       >
-        UX/UI Designer | Full-stack developer
+        UX/UI Designer | Software developer
       </h3>
     </div>
     <p
