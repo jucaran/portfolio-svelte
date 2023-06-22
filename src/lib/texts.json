@@ -14,11 +14,14 @@
       "cv_cta": "CURRICULUM VITAE",
       "work_cta": "MIRÁ MI TRABAJO"
     },
-    "works": [
-      "Tienda de cremas faciales, velas e indumentaria. Diseño del branding y desarrollo web responsive.",
-      "Tienda de articulos musicales. Diseño del branding, desarrollo front-end en React y desarrollo back-end en nodeJS.",
-      "Proyecto personal para familiarizarme con el flujo en React. Secuenciador de beats dinámico. Manejo de pulso, tiempos y sonidos."
-    ],
+    "work": {
+      "building": "Por favor, disculpa las molestias, estamos desarrollando esta página",
+      "projects": [
+        "Tienda de cremas faciales, velas e indumentaria. Diseño del branding y desarrollo web responsive.",
+        "Tienda de articulos musicales. Diseño del branding, desarrollo front-end en React y desarrollo back-end en nodeJS.",
+        "Proyecto personal para familiarizarme con el flujo en React. Secuenciador de beats dinámico. Manejo de pulso, tiempos y sonidos."
+      ]
+    },
     "contact": {
       "inputs": {
         "name": {
@@ -70,11 +73,14 @@
       "cv_cta": "CHECK MY RESUME",
       "work_cta": "CHECK MY WORK"
     },
-    "works": [
-      "Cosmetics, creams, candles and clothing store. I've worked in the branding design and in the responsive web development.",
-      "Music instruments and merch web store. I've worked in the branding design, front-end development with React and back-end development with NodeJS.",
-      "Personal proyect to get used to React's flow. Dinamic beat sequencer. Pulse, times and sounds control."
-    ],
+    "work": {
+      "building": "Please bear with us as we develop this page",
+      "projects": [
+        "Cosmetics, creams, candles and clothing store. I've worked in the branding design and in the responsive web development.",
+        "Music instruments and merch web store. I've worked in the branding design, front-end development with React and back-end development with NodeJS.",
+        "Personal proyect to get used to React's flow. Dinamic beat sequencer. Pulse, times and sounds control."
+      ]
+    },
     "contact": {
       "inputs": {
         "name": {

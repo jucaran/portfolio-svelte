@@ -86,7 +86,7 @@
         {texts[$lang]?.home.cv_cta}
       </button>
     </a>
-    <a href="mywork.html">
+    <a href="mywork">
       <button
         class="
           cta-2 ubuntu font-bold
