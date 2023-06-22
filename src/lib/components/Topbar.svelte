@@ -1,13 +1,18 @@
 <script lang="ts">
   import { browser } from '$app/environment'
   import languageIcon from '$lib/media/language.svg'
-  import { theme } from '../stores';
+  import { theme, lang } from '../stores'
+  import texts from "../texts.json"
 
   // let theme: 'dark' | 'light' | null
   if (browser) {
     theme.set(localStorage?.theme)
   }
-  const toggleMode = () => {
+  if (browser) {
+    lang.set(localStorage?.lang ?? 'en')
+  }
+
+  const toggleTheme = () => {
     if ($theme == 'dark') {
       document.documentElement.classList.remove('dark')
       theme.set('light')
@@ -22,12 +27,22 @@
       }
     }
   }
+
+  const toggleLanguage = () => {
+    const newLang = $lang == 'en' ? 'es' : 'en'
+    lang.set(newLang)
+    if (browser) {
+      localStorage?.setItem('lang', newLang)
+    }
+  }
 </script>
 
 <nav class="fixed top-5 right-3 sm:right-5 flex items-center sm:gap-5 z-20 text-[2rem] sm:text-2xl">
-  <img class="h-7 sm:h-6 cursor-pointer" src={languageIcon} alt="Change language" />
+  <button on:click={toggleLanguage}>
+    <img class="h-7 sm:h-6 cursor-pointer" src={languageIcon} alt="Change language" />
+  </button>
   <button
-    on:click={toggleMode}
+    on:click={toggleTheme}
     class="ml-2 sm:ml-0 text-primary hover:text-secondary flex transition-all duration-300"
   >
     {#if $theme == 'dark'}
@@ -41,13 +56,13 @@
     class="ml-1 sm:ml-0 text-primary hover:text-secondary flex items-center transition-all duration-300"
     href="/contact"
   >
-    <span class="hidden sm:block text-sm">Escríbeme!</span>
+    <span class="hidden sm:block text-sm">{texts[$lang]?.topbar.contact}</span>
     <span class="icon-message-circle" />
   </a>
 </nav>
 
 <style>
   span {
-    font-family: "Space mono", monospace;
+    font-family: 'Space mono', monospace;
   }
 </style>

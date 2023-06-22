@@ -3,6 +3,8 @@
 
   import Loading from '$lib/components/Loading.svelte'
   import { enhance } from '$app/forms'
+  import texts from '$lib/texts.json'
+  import { lang } from '$lib/stores'
 
   let name = ''
   let email = ''
@@ -18,16 +20,21 @@
   }
 
   const handleSubmit = ({ form, data, action, cancel }) => {
+    const mailRegex =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
     isLoading = true
     const errors = {}
-    if (data.get('email') == '') errors.email = true
+
+    if (data.get('email') == '' || !mailRegex.test(data.get('email'))) errors.email = true
     else errors.email = false
+
     if (data.get('name') == '') errors.name = true
     else errors.name = false
+
     if (data.get('message') == '') errors.message = true
     else errors.message = false
 
-    if (Object.keys(errors).some((x) => !x)) {
+    if (Object.keys(errors).some((x) => errors[x])) {
       inputsErrors = { ...inputsErrors, ...errors }
       console.log(inputsErrors)
       isLoading = false
@@ -51,7 +58,7 @@
   class="
     ubuntu transition-all duration-300
     w-screen h-screen 
-     selection:bg-secondary selection:text-light-black"
+    selection:bg-secondary selection:text-light-black"
 >
   <div
     class="
@@ -88,15 +95,15 @@
   >
     {#if isLoading}
       <div class="block relative text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <h2 class="ubuntu text-3xl sm:text-5xl font-bold text-light-color text-center">
-          Tu mensaje esta siendo enviado!
+        <h2 class="ubuntu text-3xl px-4 sm:text-5xl font-bold text-light-color text-center">
+          {texts[$lang]?.contact.sending}
         </h2>
         <Loading />
       </div>
     {:else if mailError}
       <div class="block relative text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <h2 class="ubuntu mb-4 text-3xl sm:text-5xl font-bold text-light-color text-center">
-          Hubo un error al enviar el mail :(
+        <h2 class="ubuntu mb-4 px-5 text-3xl sm:text-5xl font-bold text-light-color text-center">
+          {texts[$lang]?.contact.error}
         </h2>
         <button
           class="
@@ -108,7 +115,7 @@
         "
           on:click={() => (mailError = false)}
         >
-          INTENTAR NUEVAMENTE
+          {texts[$lang]?.contact.try}
         </button>
       </div>
     {:else if mailSent}
@@ -117,7 +124,7 @@
           id="api_response"
           class="ubuntu text-3xl sm:text-5xl font-bold text-light-color text-center"
         >
-          Gracias! Tu mensaje fue enviado correctamente
+          {texts[$lang]?.contact.success}
         </h2>
       </div>
     {:else}
@@ -131,15 +138,15 @@
             h-[70vh] sm:h-[85vh] max-h-[600px]
             rounded-3xl
             left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-            flex flex-col justify-around items-center
+            flex flex-col justify-around items-center gap-1
             sm:min-w-[450px]
           "
         >
           <h2 class="ubuntu text-3xl sm:text-5xl font-bold text-light-color text-center">
-            Pongamonos en contacto!
+            {texts[$lang]?.contact.title}
           </h2>
           <div class="flex flex-col items-start w-11/12 sm:w-4/5">
-            <label for="name">Nombre:</label>
+            <label for="name">{texts[$lang]?.contact.inputs.name.label}</label>
             <input
               bind:value={name}
               class={`
@@ -152,15 +159,15 @@
                 } focus:border-secondary
               `}
               name="name"
-              placeholder="Su nombre..."
+              placeholder={texts[$lang]?.contact.inputs.name.placeholder}
               type="text"
             />
             {#if inputsErrors.name}
-              <span class="text-red-400 p-1">No olvides tu nombre!</span>
+              <span class="text-red-400 p-1">{texts[$lang]?.contact.inputs.name.error}</span>
             {/if}
           </div>
           <div class="flex flex-col items-start w-11/12 sm:w-4/5">
-            <label for="email">Email:</label>
+            <label for="email">{texts[$lang]?.contact.inputs.email.label}</label>
             <input
               bind:value={email}
               class={`
@@ -174,14 +181,14 @@
               `}
               name="email"
               type="email"
-              placeholder="Su email..."
+              placeholder={texts[$lang]?.contact.inputs.email.placeholder}
             />
             {#if inputsErrors.email}
-              <span class="text-red-400 p-1">No olvides tu email!</span>
+              <span class="text-red-400 p-1">{texts[$lang]?.contact.inputs.email.error}</span>
             {/if}
           </div>
           <div class="flex flex-col items-start w-11/12 sm:w-4/5">
-            <label for="message">Mensaje:</label>
+            <label for="message">{texts[$lang]?.contact.inputs.message.label}</label>
             <textarea
               bind:value={message}
               class={`
@@ -194,12 +201,12 @@
                 } focus:border-secondary
               `}
               name="message"
-              placeholder="Su mensaje..."
+              placeholder={texts[$lang]?.contact.inputs.message.placeholder}
               rows="5"
               cols="15"
             />
             {#if inputsErrors.message}
-              <span class="text-red-400 p-1">No olvides tu mensaje!</span>
+              <span class="text-red-400 p-1">{texts[$lang]?.contact.inputs.message.error}</span>
             {/if}
           </div>
           <button
@@ -212,7 +219,7 @@
             "
             type="submit"
           >
-            ENVIAR
+            {texts[$lang]?.contact.submit}
           </button>
         </form>
       </section>

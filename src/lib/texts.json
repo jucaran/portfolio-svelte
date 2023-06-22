@@ -1,0 +1,104 @@
+{
+  "es": {
+    "topbar": {
+      "contact": "Escríbeme!"
+    },
+    "sidebar": {
+      "home": "Inicio",
+      "download_cv": "Descargar CV",
+      "my_work": "Mi trabajo",
+      "contact": "Contactame!"
+    },
+    "home": {
+      "about": "Desde que era muy chico siempre me gusto jugar creando cosas. Empecé a usar Photoshop cuando tenía 13 y cree mi primer web con HTML y CSS cuando tenia 15. Después empecé a aprender Javascript y hoy tengo experiencia con ReactJS, NodeJS, Flutter, Python, Firebase y Kubernetes, entre otras tecnologías. También me encanta hacer música, sacar fotos y dibujar.",
+      "cv_cta": "CURRICULUM VITAE",
+      "work_cta": "MIRÁ MI TRABAJO"
+    },
+    "works": [
+      "Tienda de cremas faciales, velas e indumentaria. Diseño del branding y desarrollo web responsive.",
+      "Tienda de articulos musicales. Diseño del branding, desarrollo front-end en React y desarrollo back-end en nodeJS.",
+      "Proyecto personal para familiarizarme con el flujo en React. Secuenciador de beats dinámico. Manejo de pulso, tiempos y sonidos."
+    ],
+    "contact": {
+      "inputs": {
+        "name": {
+          "label": "Nombre:",
+          "placeholder": "Tu nombre...",
+          "error": "No olvides tu nombre!"
+        },
+        "email": {
+          "label": "Email:",
+          "placeholder": "Tu email...",
+          "error": "El email no es válido!"
+        },
+        "message": {
+          "label": "Mensaje:",
+          "placeholder": "Tu mensaje...",
+          "error": "No olvides tu mensaje!"
+        }
+      },
+      "labels": {
+        "name": "Nombre:",
+        "email": "Email:",
+        "message": "Mensaje:"
+      },
+      "placeholders": {
+        "name": "Su nombre...",
+        "email": "Su email...",
+        "message": "Su mensaje..."
+      },
+      "title": "Pongamonos en contacto!",
+      "submit": "Enviar!",
+      "sending": "Tu mensaje está siendo enviado!",
+      "error": "Hubo un error al enviar el mail 😔",
+      "try": "INTENTAR NUEVAMENTE",
+      "success": "Gracias! Tu mensaje fue enviado correctamente"
+    }
+  },
+  "en": {
+    "topbar": {
+      "contact": "Get in touch!"
+    },
+    "sidebar": {
+      "home": "Home",
+      "download_cv": "My resume",
+      "my_work": "My work",
+      "contact": "Contact me!"
+    },
+    "home": {
+      "about": "Since i was a little kid I always liked to play around creating things. I began to use Photoshop when I was 13 years old and made my first website with HTML and CSS when I was 15 years old. Then I started learning Javascript and now I have experience with ReactJS, NodeJS, Flutter, Python, Firebase y Kubernetes between other cool technologies. I also love making music, shooting photos and drawing.",
+      "cv_cta": "CHECK MY RESUME",
+      "work_cta": "CHECK MY WORK"
+    },
+    "works": [
+      "Cosmetics, creams, candles and clothing store. I've worked in the branding design and in the responsive web development.",
+      "Music instruments and merch web store. I've worked in the branding design, front-end development with React and back-end development with NodeJS.",
+      "Personal proyect to get used to React's flow. Dinamic beat sequencer. Pulse, times and sounds control."
+    ],
+    "contact": {
+      "inputs": {
+        "name": {
+          "label": "Name:",
+          "placeholder": "Your name...",
+          "error": "Don't forget your name!"
+        },
+        "email": {
+          "label": "Email:",
+          "placeholder": "Your email...",
+          "error": "The email is invalid!"
+        },
+        "message": {
+          "label": "Message:",
+          "placeholder": "Your message...",
+          "error": "Don't forget your message!"
+        }
+      },
+      "title": "Let's get in touch!",
+      "submit": "Send!",
+      "sending": "Your message is being delivered!",
+      "error": "There was an error sending your message 😔",
+      "try": "TRY AGAIN",
+      "success": "Thanks! Your message was delivered"
+    }
+  }
+}

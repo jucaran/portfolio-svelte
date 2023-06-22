@@ -1,10 +1,12 @@
+<script>
+  import Character from './home/Character.svelte'
+  import texts from "$lib/texts.json"
+  import { lang } from '$lib/stores';
+</script>
+
 <svelte:head>
   <title>Juan Castro Arancibia | Software Engineer UX/UI Designer</title>
 </svelte:head>
-
-<script>
-  import Character from './home/Character.svelte'
-</script>
 
 <!-- Home content -->
 <section
@@ -47,7 +49,7 @@
         mb-2 sm:mb-1 sm:-mt-2 lg:mb-0 lg:-mt-4 
         text-[2rem] lg:text-[3rem] 
         leading-[2.25rem] lg:leading-[3.25rem]
-       "
+        "
       >
         Castro Arancibia
       </h2>
@@ -58,7 +60,7 @@
         mb-4 sm:mb-8
         "
       >
-        UX/UI Designer | Full-stack web developer
+        UX/UI Designer | Full-stack developer
       </h3>
     </div>
     <p
@@ -68,10 +70,7 @@
           selection:text-white selection:bg-primary
         "
     >
-      Desde que era muy chico siempre me gusto jugar creando cosas. Empecé a usar Photoshop cuando
-      tenía 13 y cree mi primer web con HTML y CSS cuando tenia 15. Después empecé a aprender
-      Javascript y hoy tengo experiencia con ReactJS, NodeJS, Flutter, Python, Firebase y
-      Kubernetes, entre otras tecnologías. También me encanta hacer música, sacar fotos y dibujar.
+      {texts[$lang]?.home.about}
     </p>
     <a target="_blank" href="./Juan_Castro_Arancibia_CVes.pdf">
       <button
@@ -84,7 +83,7 @@
           border-primary-dark sm:border-transparent hover:border-white
         "
       >
-        CURRICULUM VITAE
+        {texts[$lang]?.home.cv_cta}
       </button>
     </a>
     <a href="mywork.html">
@@ -98,7 +97,7 @@
           border-secondary-dark sm:border-transparent hover:border-white
         "
       >
-        MIRÁ MI TRABAJO
+        {texts[$lang]?.home.work_cta}
       </button>
     </a>
   </header>

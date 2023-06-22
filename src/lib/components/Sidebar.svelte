@@ -1,4 +1,7 @@
 <script lang="ts">
+  import texts from "../texts.json"
+  import { lang } from "$lib/stores";
+
   let active = false
   const toggleMenu = () => (active = !active)
 </script>
@@ -16,7 +19,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
   on:click={toggleMenu}
-  class={`fixed z-10 w-screen h-screen top-0 opacity-0 ${active ? 'left-0' : '-left-full'}`}
+  class={`fixed z-50 w-screen h-screen top-0 opacity-0 ${active ? 'left-0' : '-left-full'}`}
 />
 <nav
   class={`
@@ -24,7 +27,7 @@
 		bg-dark-color text-white
 		top-0 ${active ? 'left-0' : '-left-full'}
 		flex justify-center
-		transition-all duration-300 ease-out
+		transition-all duration-500 ease-out
 	`}
 >
   <ul class="h-full w-4/5 mx-auto">
@@ -37,35 +40,39 @@
     </li>
     <li class="mb-[11vh]">
       <a
+        on:click={() => active = false}
         href="/"
         class="block w-full whitespace-nowrap p-4 rounded-md text-white hover:bg-primary"
       >
-        <span class="icon-home" /> <span class="ml-4">Inicio</span>
+        <span class="icon-home" /> <span class="ml-4">{texts[$lang]?.sidebar.home}</span>
       </a>
     </li>
     <li class="mb-[11vh]">
       <a
+        on:click={() => active = false}
         class="block w-full whitespace-nowrap p-4 rounded-md text-white hover:bg-primary"
         target="_blank"
         href="./Juan_Castro_Arancibia_CVes.pdf"
       >
-        <span class="icon-user" /><span class="ml-4">Descargar CV</span>
+        <span class="icon-user" /><span class="ml-4">{texts[$lang]?.sidebar.download_cv}</span>
       </a>
     </li>
     <li class="mb-[11vh]">
       <a
+        on:click={() => active = false}
         class="block w-full whitespace-nowrap p-4 rounded-md text-white hover:bg-primary"
         href="/mywork"
       >
-        <span class="icon-paperclip" /><span class="ml-4">Mi trabajo</span>
+        <span class="icon-paperclip" /><span class="ml-4">{texts[$lang]?.sidebar.my_work}</span>
       </a>
     </li>
     <li class="mb-[11vh]">
       <a
+        on:click={() => active = false}
         class="block w-full whitespace-nowrap p-4 rounded-md text-white hover:bg-primary"
         href="/contact"
       >
-        <span class="icon-message-circle" /><span class="ml-4">Contactame!</span>
+        <span class="icon-message-circle" /><span class="ml-4">{texts[$lang]?.sidebar.contact}</span>
       </a>
     </li>
   </ul>
