@@ -6,44 +6,44 @@
 
   onMount(() => {
     if (browser) {
-      const pageWidth = document.documentElement.scrollWidth
-      const pageHeight = document.documentElement.scrollHeight
+      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
-      canvas.width = pageWidth
-      canvas.height = pageHeight
+      canvas.width = vw
+      canvas.height = vh
       canvas.style.zIndex = '-10'
 
       const ctx = canvas.getContext('2d')
 
-      const circle1 = {
+      const pinkBuble = {
         x: canvas.height / 10 + 20,
         y: 200,
-        size: canvas.height / 10,
-        dx: canvas.width / 250,
-        dy: canvas.width / 300
-        // dx: 5,
-        // dy: 4,
+        size: 100,
+        dx: Math.min(canvas.width / 250, 5),
+        dy: Math.min(canvas.width / 300, 4)
       }
 
-      const circle2 = {
+      console.log(pinkBuble.dx, pinkBuble.dy)
+
+      const blueBubble = {
         x: canvas.width - canvas.height / 15,
-        y: canvas.height / 15 + 50,
+        y: canvas.height - 200,
         size: canvas.height / 15,
-        dx: (canvas.width / 250) * -1,
-        dy: (canvas.width / 300) * -1
-        // dx: -5,
-        // dy: -4,
+        dx: Math.max((canvas.width / 250) * -1, -5),
+        dy: Math.max((canvas.width / 300) * -1, -4)
       }
 
-      function drawCircles() {
+      console.log(blueBubble.dx, blueBubble.dy)
+
+      function drawBubbles() {
         ctx?.beginPath()
-        ctx?.arc(circle1.x, circle1.y, circle1.size, 0, Math.PI * 2)
+        ctx?.arc(pinkBuble.x, pinkBuble.y, pinkBuble.size, 0, Math.PI * 2)
         if (ctx) {
           ctx.fillStyle = '#e36571'
         }
         ctx?.fill()
         ctx?.beginPath()
-        ctx?.arc(circle2.x, circle2.y, circle2.size, 0, Math.PI * 2)
+        ctx?.arc(blueBubble.x, blueBubble.y, blueBubble.size, 0, Math.PI * 2)
         if (ctx) {
           ctx.fillStyle = '#8edbd8'
         }
@@ -53,28 +53,28 @@
       function update() {
         ctx?.clearRect(0, 0, canvas.width, canvas.height)
 
-        drawCircles()
+        drawBubbles()
 
         // change position
-        circle1.x += circle1.dx
-        circle1.y += circle1.dy
-        circle2.x += circle2.dx
-        circle2.y += circle2.dy
+        pinkBuble.x += pinkBuble.dx
+        pinkBuble.y += pinkBuble.dy
+        blueBubble.x += blueBubble.dx
+        blueBubble.y += blueBubble.dy
 
         // Detect side walls for each circle
-        if (circle1.x + circle1.size > canvas.width || circle1.x - circle1.size < 0) {
-          circle1.dx *= -1
+        if (pinkBuble.x + pinkBuble.size > canvas.width || pinkBuble.x - pinkBuble.size < 0) {
+          pinkBuble.dx *= -1
         }
-        if (circle2.x + circle2.size > canvas.width || circle2.x - circle2.size < 0) {
-          circle2.dx *= -1
+        if (blueBubble.x + blueBubble.size > canvas.width || blueBubble.x - blueBubble.size < 0) {
+          blueBubble.dx *= -1
         }
 
         // Detect top and bottom walls for each circle
-        if (circle1.y + circle1.size > canvas.height || circle1.y - circle1.size < 0) {
-          circle1.dy *= -1
+        if (pinkBuble.y + pinkBuble.size > canvas.height || pinkBuble.y - pinkBuble.size < 0) {
+          pinkBuble.dy *= -1
         }
-        if (circle2.y + circle2.size > canvas.height || circle2.y - circle2.size < 0) {
-          circle2.dy *= -1
+        if (blueBubble.y + blueBubble.size > canvas.height || blueBubble.y - blueBubble.size < 0) {
+          blueBubble.dy *= -1
         }
 
         requestAnimationFrame(update)
@@ -85,4 +85,8 @@
   })
 </script>
 
-<canvas class="bg-white dark:bg-light-black transition-all duration-300 fixed top-0 left-0 w-screen h-screen pointer-events-none" id="canvas" bind:this={canvas} />
+<canvas
+  class="bg-white dark:bg-light-black transition-all duration-300 fixed top-0 left-0 w-screen h-screen pointer-events-none"
+  id="canvas"
+  bind:this={canvas}
+/>
