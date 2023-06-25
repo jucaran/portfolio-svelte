@@ -16,13 +16,5 @@ module.exports = {
       }
     }
   },
-  // corePlugins: {
-  //   backdropOpacity: false,
-  //   backgroundOpacity: false,
-  //   borderOpacity: false,
-  //   divideOpacity: false,
-  //   ringOpacity: false,
-  //   textOpacity: false
-  // },
   plugins: []
 }
