@@ -1,6 +1,6 @@
 <script lang="ts">
   import { browser } from '$app/environment'
-  import languageIcon from '$lib/media/language.svg'
+  import languageIcon from '$lib/assets/language.svg'
   import { theme, lang } from '../stores'
   import texts from '$lib/texts.json'
 
