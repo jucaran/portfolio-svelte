@@ -6,8 +6,8 @@
 
   onMount(() => {
     if (browser) {
-      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
-      const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+      const vw = Math.min(document.documentElement.scrollWidth, window.innerWidth)
+      const vh = Math.min(document.documentElement.scrollHeight, window.innerHeight)
 
       canvas.width = vw
       canvas.height = vh
@@ -19,16 +19,16 @@
         x: 150,
         y: 200,
         size: 100,
-        dx: Math.min(canvas.height / 400, 5),
-        dy: Math.min(canvas.height / 450, 4)
+        dx: Math.min(canvas.height / 250, 5),
+        dy: Math.min(canvas.height / 300, 4)
       }
 
       const blueBubble = {
         x: canvas.width - 150,
         y: canvas.height - 200,
         size: canvas.height / 15,
-        dx: Math.max((canvas.height / 400) * -1, -5),
-        dy: Math.max((canvas.height / 450) * -1, -4)
+        dx: Math.max((canvas.height / 250) * -1, -5),
+        dy: Math.max((canvas.height / 300) * -1, -4)
       }
 
       function drawBubbles() {
