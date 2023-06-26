@@ -1,57 +1,40 @@
-<script>
+<script lang="ts">
   import texts from '$lib/texts.json'
   import { lang } from '$lib/stores'
+  import Columns from '$lib/components/Columns.svelte'
+  import works from './works'
+  import WorkItem from './WorkItem.svelte'
+
+  let isActive = works.map(() => false)
+  const toggle = (i: number) => {
+    if (isActive[i]) isActive = isActive.map(() => false)
+    else isActive = isActive.map((_, idx) => idx === i)
+  }
 </script>
 
 <svelte:head>
   <title>Juan Castro Arancibia | {texts[$lang]?.work.title}</title>
 </svelte:head>
 
+<Columns />
 <main
   class="
-    ubuntu transition-all duration-300
-    w-screen h-screen 
-    selection:bg-secondary selection:text-light-black"
->
-  <div
-    class="
-      bg-secondary
-      absolute
-      top-[20vh]
-      w-screen
-      h-[30vw] sm:h-[25vh]
-      sm:min-w-[450px]
+    ubuntu w-screen
+    selection:bg-secondary selection:text-light-black
   "
-  />
-  <div
+>
+  <section
     class="
-      bg-primary absolute
-      -translate-x-1/2
-      h-screen
-      w-[30vw] sm:w-[30vh]
-      left-1/3 sm:left-[10%] lg:left-1/4
-    "
-  />
-  <div
-    class="
-      backdrop-blur-sm
-      absolute text-light-color shadow
-      bg-light-black bg-opacity-40
-      dark:bg-opacity-80 dark:border-2 dark:border-light-color
-      w-[95vw] sm:w-[70vw] max-w-lg min-w-[300px]
-      h-[80vh] sm:h-[90vh] max-h-[700px]
-      rounded-3xl
-      left-1/2 -translate-x-1/2
-      top-[4.5rem] md:top-1/2 md:-translate-y-1/2
-      flex flex-col
+      min-h-screen flex flex-row flex-wrap gap-10 justify-center content-center items-center
+      sm:p-10 p-4 sm:pb-4 pb-10 sm:pt-12 pt-20
     "
   >
-    <div class="block relative text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <h2 class="ubuntu text-3xl px-6 sm:text-3xl font-bold text-light-color text-center">
-        {texts[$lang]?.work.building}
-      </h2>
-    </div>
-  </div>
+    {#each works as work, i}
+      {#if isActive.every(e => !e) || isActive[i]}
+        <WorkItem {work} active={isActive[i]} toggle={() => toggle(i)} />
+      {/if}
+    {/each}
+  </section>
 </main>
 
 <style>

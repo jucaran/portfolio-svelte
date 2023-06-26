@@ -6,6 +6,7 @@
   const toggleMenu = () => (active = !active)
 </script>
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <span
   on:click={toggleMenu}
@@ -16,6 +17,7 @@
 		transition-colors duration-200
 	"
 />
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
   on:click={toggleMenu}
@@ -32,6 +34,7 @@
 >
   <ul class="h-full w-4/5 mx-auto">
     <li class="mb-[11vh]">
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <span
         on:click={() => (active = !active)}
