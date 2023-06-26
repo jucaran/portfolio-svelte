@@ -28,7 +28,7 @@ const works: WorkItem[] = [
     title: 'Vanta',
     description: {
       es: 'Vanta es un unicornio estadounidense que se encarga de automatizar tests de seguridad. En mi rol como ingeniero de software trabajo junto al equipo de integraciones y nos dedicamos a conectar a Vanta con diferentes servicios externos. Generamos código altamente escalable.',
-      en: 'Vanta is an unicorn from the states that helps companies to automate complience tests. In my role as a software engineer I work with the integrations team to connect Vanta with diferent external vendors, we generate highly reliable and scalable code.'
+      en: 'Vanta is an unicorn from the states that helps companies to automate security compliance tests. In my role as a software engineer I work with the integrations team to connect Vanta with diferent external vendors, we generate highly reliable and scalable code.'
     },
     url: 'https://vanta.com',
     skills: ['react', 'graphql', 'node', 'mongo']
