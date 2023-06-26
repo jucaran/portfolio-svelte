@@ -19,16 +19,16 @@
         x: 150,
         y: 200,
         size: 100,
-        dx: Math.min(canvas.width / 250, 5),
-        dy: Math.min(canvas.width / 300, 4)
+        dx: Math.min(canvas.height / 400, 5),
+        dy: Math.min(canvas.height / 450, 4)
       }
 
       const blueBubble = {
         x: canvas.width - 150,
         y: canvas.height - 200,
         size: canvas.height / 15,
-        dx: Math.max((canvas.width / 250) * -1, -5),
-        dy: Math.max((canvas.width / 300) * -1, -4)
+        dx: Math.max((canvas.height / 400) * -1, -5),
+        dy: Math.max((canvas.height / 450) * -1, -4)
       }
 
       function drawBubbles() {
