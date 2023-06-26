@@ -8,6 +8,7 @@
     if (browser) {
       const vw = Math.min(document.documentElement.scrollWidth, window.innerWidth)
       const vh = Math.min(document.documentElement.scrollHeight, window.innerHeight)
+      const mobile = vw < 600
 
       canvas.width = vw
       canvas.height = vh
@@ -15,25 +16,27 @@
 
       const ctx = canvas.getContext('2d')
 
-      const pinkBuble = {
+      const pinkBubble = {
         x: 150,
         y: 200,
         size: 100,
-        dx: Math.min(canvas.height / 250, 5),
-        dy: Math.min(canvas.height / 300, 4)
+        dx: mobile ? canvas.height / 350 : 5,
+        dy: mobile ? canvas.height / 400 : 4
       }
+
+      console.log(pinkBubble.dx)
 
       const blueBubble = {
         x: canvas.width - 150,
         y: canvas.height - 200,
         size: canvas.height / 15,
-        dx: Math.max((canvas.height / 250) * -1, -5),
-        dy: Math.max((canvas.height / 300) * -1, -4)
+        dx: mobile ? canvas.height / 350 * -1 : -5,
+        dy: mobile ? canvas.height / 400 * -1 : -4
       }
 
       function drawBubbles() {
         ctx?.beginPath()
-        ctx?.arc(pinkBuble.x, pinkBuble.y, pinkBuble.size, 0, Math.PI * 2)
+        ctx?.arc(pinkBubble.x, pinkBubble.y, pinkBubble.size, 0, Math.PI * 2)
         if (ctx) {
           ctx.fillStyle = '#e36571'
         }
@@ -52,22 +55,22 @@
         drawBubbles()
 
         // change position
-        pinkBuble.x += pinkBuble.dx
-        pinkBuble.y += pinkBuble.dy
+        pinkBubble.x += pinkBubble.dx
+        pinkBubble.y += pinkBubble.dy
         blueBubble.x += blueBubble.dx
         blueBubble.y += blueBubble.dy
 
         // Detect side walls for each circle
-        if (pinkBuble.x + pinkBuble.size > canvas.width || pinkBuble.x - pinkBuble.size < 0) {
-          pinkBuble.dx *= -1
+        if (pinkBubble.x + pinkBubble.size > canvas.width || pinkBubble.x - pinkBubble.size < 0) {
+          pinkBubble.dx *= -1
         }
         if (blueBubble.x + blueBubble.size > canvas.width || blueBubble.x - blueBubble.size < 0) {
           blueBubble.dx *= -1
         }
 
         // Detect top and bottom walls for each circle
-        if (pinkBuble.y + pinkBuble.size > canvas.height || pinkBuble.y - pinkBuble.size < 0) {
-          pinkBuble.dy *= -1
+        if (pinkBubble.y + pinkBubble.size > canvas.height || pinkBubble.y - pinkBubble.size < 0) {
+          pinkBubble.dy *= -1
         }
         if (blueBubble.y + blueBubble.size > canvas.height || blueBubble.y - blueBubble.size < 0) {
           blueBubble.dy *= -1
