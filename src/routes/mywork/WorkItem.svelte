@@ -52,30 +52,34 @@
     {work.title}
   </h2>
   {#if active}
-    <p in:blur={{ duration: 300, delay: 250, amount: 20 }} class="px-2 sm:px-6 text-center sm:text-start">
-      {work.description[$lang]}
-    </p>
-    {#if work.url}
-      <a
-        href={work.url}
-        in:blur={{ duration: 300, delay: 250, amount: 20 }}
-        target="_blank"
-        class="
-        mt-2 px-4 py-2 hover:px-5 hover:py-3 hover:border-light-color hover:border-4
-        transition-all duration-300
-        bg-primary-light rounded-lg font-bold uppercase
-      "
-      >
-        {texts[$lang].work.url}
-      </a>
-    {/if}
-    <section in:blur={{ duration: 300, delay: 250, amount: 20 }} class="flex gap-2 mt-2">
-      {#each work.skills as skill}
-        <Skill kind={skill} />
-      {/each}
-    </section>
+    <div
+      class="flex flex-col gap-4 items-center justify-center"
+      in:blur={{ duration: 500, delay: 250, amount: 20 }}
+    >
+      <p class="px-2 sm:px-6 text-center sm:text-start">
+        {work.description[$lang]}
+      </p>
+      {#if work.url}
+        <a
+          href={work.url}
+          target="_blank"
+          class="
+            px-4 py-2 hover:px-5 hover:py-3 hover:border-light-color hover:border-4
+            transition-all duration-300
+            bg-primary-light rounded-lg font-bold uppercase
+          "
+        >
+          {texts[$lang].work.url}
+        </a>
+      {/if}
+      <section in:blur={{ duration: 300, delay: 250, amount: 20 }} class="flex gap-2">
+        {#each work.skills as skill}
+          <Skill kind={skill} />
+        {/each}
+      </section>
+    </div>
   {:else}
-    <section class="sm:flex gap-2 mt-2 hidden">
+    <section class="sm:flex gap-2 hidden">
       {#each work.skills ?? [] as skill}
         <Skill kind={skill} />
       {/each}
