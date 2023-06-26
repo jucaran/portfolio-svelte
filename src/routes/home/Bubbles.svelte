@@ -16,7 +16,7 @@
       const ctx = canvas.getContext('2d')
 
       const pinkBuble = {
-        x: canvas.height / 10 + 20,
+        x: canvas.height / 10 + 50,
         y: 200,
         size: 100,
         dx: Math.min(canvas.width / 250, 5),
