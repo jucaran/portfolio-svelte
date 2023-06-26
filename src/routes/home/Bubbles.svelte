@@ -16,7 +16,7 @@
       const ctx = canvas.getContext('2d')
 
       const pinkBuble = {
-        x: canvas.height / 10 + 50,
+        x: 150,
         y: 200,
         size: 100,
         dx: Math.min(canvas.width / 250, 5),
@@ -24,7 +24,7 @@
       }
 
       const blueBubble = {
-        x: canvas.width - canvas.height / 15,
+        x: canvas.width - 150,
         y: canvas.height - 200,
         size: canvas.height / 15,
         dx: Math.max((canvas.width / 250) * -1, -5),
