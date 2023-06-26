@@ -1,17 +1,20 @@
 <script lang="ts">
   export let active: boolean
   export let borders: boolean
-  let blink = false
+  let isBlinking = false
 
-  setInterval(() => {
-    blink = true
-    setTimeout(() => {
-      blink = false
-    }, 100)
-  }, 2500)
+  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
+  const blink = async () => {
+    isBlinking = true
+    await sleep(100).then(() => (isBlinking = false))
+    await sleep(500).then(() => (isBlinking = true))
+    await sleep(100).then(() => (isBlinking = false))
+  }
+
+  setInterval(blink, 3500)
 </script>
 
-{#if blink || active}
+{#if isBlinking || active}
   <g id="eyes_active">
     <path
       id="Vector_8"
