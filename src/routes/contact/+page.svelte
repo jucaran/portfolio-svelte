@@ -36,13 +36,11 @@
 
     if (Object.keys(errors).some((x) => errors[x])) {
       inputsErrors = { ...inputsErrors, ...errors }
-      console.log(inputsErrors)
       isLoading = false
       cancel()
     }
 
     return ({ result }) => {
-      console.log('result', result)
       if (result.error) mailError = true
       else mailSent = true
       isLoading = false

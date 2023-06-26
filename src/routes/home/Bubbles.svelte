@@ -23,8 +23,6 @@
         dy: Math.min(canvas.width / 300, 4)
       }
 
-      console.log(pinkBuble.dx, pinkBuble.dy)
-
       const blueBubble = {
         x: canvas.width - canvas.height / 15,
         y: canvas.height - 200,
@@ -32,8 +30,6 @@
         dx: Math.max((canvas.width / 250) * -1, -5),
         dy: Math.max((canvas.width / 300) * -1, -4)
       }
-
-      console.log(blueBubble.dx, blueBubble.dy)
 
       function drawBubbles() {
         ctx?.beginPath()
