@@ -6,8 +6,12 @@
 
   onMount(() => {
     if (browser) {
-      const vw = Math.min(document.documentElement.scrollWidth, window.innerWidth)
-      const vh = Math.min(document.documentElement.scrollHeight, window.innerHeight)
+      const vw =
+        document.getElementById('canvas')?.scrollWidth ||
+        Math.min(document.documentElement.scrollWidth, window.innerWidth)
+      const vh =
+        document.getElementById('canvas')?.scrollHeight ||
+        Math.min(document.documentElement.scrollHeight, window.innerHeight)
       const mobile = vw < 600
 
       canvas.width = vw
@@ -30,8 +34,8 @@
         x: canvas.width - 150,
         y: canvas.height - 200,
         size: canvas.height / 15,
-        dx: mobile ? canvas.height / 350 * -1 : -5,
-        dy: mobile ? canvas.height / 400 * -1 : -4
+        dx: mobile ? (canvas.height / 350) * -1 : -5,
+        dy: mobile ? (canvas.height / 400) * -1 : -4
       }
 
       function drawBubbles() {
