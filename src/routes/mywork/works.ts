@@ -70,7 +70,7 @@ const works: WorkItem[] = [
       es: 'Ineco es una institución de salud mental. Empecé trabajando como software developer semi-senior y luego fui tech-lead del equipo de desarrollo. Tenía contacto directo con el CEO y los jefes de cada departamento, y convertía sus requerimientos en tickets que resolvíamos junto con el equipo. Trabajamos en su sistema interno y en su aplicación mobile. Teníamos una arquitectura de microservicios deployada en kubernetes.',
       en: "Ineco it's a mental health institution. I started working there as a semi-senior software developer and then became tech lead of the software developing team. I talked directly with the CEO and the head of every department, we had a highly reliable and scalable architecture deployed in kubernetes. We also worked on their mobile application developed in flutter."
     },
-    url: 'https://ineco.com.ar',
+    url: 'https://ineco.org.ar',
     skills: ['node', 'mongo', 'react', 'flutter', 'kubernetes']
   },
   {
