@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Alterra from '$lib/assets/alterra_logo.svg'
   import Vanta from '$lib/assets/vanta.png'
   import NaranjaX from '$lib/assets/naranjax.svg'
   import Buildware from '$lib/assets/buildware.svg'
@@ -9,10 +8,6 @@
   import type { WorkItem } from './works'
 
   const logos: { [key: string]: { type: 'png' | 'svg'; logo: string } } = {
-    alterra: {
-      type: 'svg',
-      logo: Alterra
-    },
     vanta: {
       type: 'png',
       logo: Vanta
