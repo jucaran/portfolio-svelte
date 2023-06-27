@@ -42,10 +42,16 @@
   export let work: WorkItem
 </script>
 
-<div class="w-[100px] sm:w-[150px] h-[100px] sm:h-[150px] flex justify-center items-center bg-light-color rounded-full">
+<div
+  class="w-[100px] sm:w-[150px] h-[100px] sm:h-[150px] flex justify-center items-center bg-light-color rounded-full"
+>
   {#if logos[work.work].type === 'png'}
     <img alt={`${work.title} Logo`} src={logos[work.work].logo ?? ''} />
   {:else}
-    <img alt={`${work.title} Logo`} class="h-[60px] sm:h-[100px] w-[60px] sm:w-[100px]" src={logos[work.work].logo ?? ''} />
+    <img
+      alt={`${work.title} Logo`}
+      class="h-[60px] sm:h-[100px] w-[60px] sm:w-[100px]"
+      src={logos[work.work].logo ?? ''}
+    />
   {/if}
 </div>

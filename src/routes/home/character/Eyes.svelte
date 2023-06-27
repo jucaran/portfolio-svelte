@@ -1,9 +1,10 @@
 <script lang="ts">
+    import { sleep } from "$lib/utils"
+
   export let active: boolean
   export let borders: boolean
   let isBlinking = false
 
-  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms))
   const blink = async () => {
     isBlinking = true
     await sleep(100).then(() => (isBlinking = false))

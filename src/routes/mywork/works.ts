@@ -4,12 +4,22 @@ export type SkillType =
   | 'mongo'
   | 'kubernetes'
   | 'aws'
-  | 'js'
   | 'flutter'
   | 'graphql'
   | 'svelte'
   | 'docker'
-  | 'postgres'
+
+export const skillDisplayName : { [key in SkillType]: string } = {
+  node: 'NodeJS',
+  react: 'React',
+  mongo: 'MongoDB',
+  kubernetes: 'Kubernetes',
+  aws: 'AWS',
+  flutter: 'Flutter',
+  graphql: 'GraphQL',
+  svelte: 'Svelte',
+  docker: 'Docker'
+}
 
 export interface WorkItem {
   work: string
@@ -77,7 +87,7 @@ const works: WorkItem[] = [
     title: 'Pranapp',
     description: {
       es: 'Proyecto personal que permite a los usuarios hacer ejercicios de respiración. Esta hecho con Flutter y deployado en Firebase. También permite a los usuarios crear sus propias sesiones de respiración.',
-      en: "Personal project that allows the users to do guided breathing exercises. It's made with Flutter and deploy in Firebase. It allows the user to create their own breathing sessions.",
+      en: "Personal project that allows the users to do guided breathing exercises. It's made with Flutter and deploy in Firebase. It allows the user to create their own breathing sessions."
     },
     url: 'https://pranapp.jucaran.ar',
     skills: ['flutter']

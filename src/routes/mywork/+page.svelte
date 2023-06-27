@@ -4,11 +4,23 @@
   import Columns from '$lib/components/Columns.svelte'
   import works from './works'
   import WorkItem from './WorkItem.svelte'
+  import SelectedWork from './SelectedWork.svelte'
+  import { sleep } from '$lib/utils'
 
   let isActive = works.map(() => false)
-  const toggle = (i: number) => {
-    if (isActive[i]) isActive = isActive.map(() => false)
-    else isActive = isActive.map((_, idx) => idx === i)
+  let selected: number | false = false
+  let showWorks: boolean = true
+
+  const toggle = async (i?: number) => {
+    if (selected !== false) {
+      selected = false
+      await sleep(500)
+      showWorks = true
+    } else {
+      showWorks = false
+      await sleep(500)
+      selected = i ?? false
+    }
   }
 </script>
 
@@ -26,14 +38,17 @@
   <section
     class="
       min-h-screen flex flex-row flex-wrap gap-10 justify-center content-center items-center
-      sm:p-10 p-4 sm:pb-4 pb-10 sm:pt-12 pt-20
+      sm:p-10 p-4 sm:pb-4 pb-10 sm:pt-16 pt-20
     "
   >
     {#each works as work, i}
       {#if isActive.every(e => !e) || isActive[i]}
-        <WorkItem {work} active={isActive[i]} toggle={() => toggle(i)} />
+        <WorkItem {work} toggle={() => toggle(i)} show={showWorks} />
       {/if}
     {/each}
+    {#if selected !== false}
+      <SelectedWork close={toggle} work={works[selected]} />
+    {/if}
   </section>
 </main>
 

@@ -2,87 +2,46 @@
   import { blur } from 'svelte/transition'
   import WorkLogo from './WorkLogo.svelte'
   import type { WorkItem } from './works'
-  import { lang } from '$lib/stores'
   import Skill from './Skill.svelte'
-  import texts from '$lib/texts.json'
 
-  export let work: WorkItem
-  export let active: boolean
   export let toggle: () => void
-  let width = ''
+  export let work: WorkItem
+  export let show: boolean
+  let width = 'w-72'
 
   const close = () => {
-    setTimeout(toggle, 100)
+    width = 'w-72'
+    toggle()
   }
-
-  $: {
-    if (!active) {
-      width = 'w-72'
-    } else {
-      setTimeout(() => {
-        width = 'sm:w-[800px] w-full'
-      }, 300)
-    }
-  }
-
-  console.log(work.skills)
 </script>
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<article
-  on:click={active ? null : () => toggle()}
-  transition:blur={{ duration: 300, amount: 20 }}
-  on:mouseenter={() => !active && (width = 'w-80')}
-  on:mouseleave={() => !active && (width = 'w-72')}
-  class={`
+{#if show}
+  <article
+    on:click={close}
+    transition:blur={{ duration: 400, amount: 20 }}
+    on:mouseenter={() => (width = 'w-80')}
+    on:mouseleave={() => (width = 'w-72')}
+    class={`
     px-4 py-8 shadow backdrop-blur-sm rounded-3xl
     text-light-color  bg-light-black 
     bg-opacity-60 dark:bg-opacity-90 dark:border-2 dark:border-light-color
     flex flex-col justify-center items-center gap-2
     transition-all duration-300
-    ${width} ${active ? '' : 'cursor-pointer'}
+    ${width} cursor-pointer
   `}
->
-  {#if active}
-    <button class="icon-x-circle self-end text-[2rem] mr-2" on:click|stopPropagation={close} />
-  {/if}
-  <WorkLogo {work} />
-  <h2 class="ubuntu text-3xl px-4 sm:text-3xl font-bold text-light-color text-center">
-    {work.title}
-  </h2>
-  {#if active}
-    <div
-      class="flex flex-col gap-4 items-center justify-center"
-      in:blur={{ duration: 500, delay: 250, amount: 20 }}
-    >
-      <p class="px-2 sm:px-6 text-center sm:text-start">
-        {work.description[$lang]}
-      </p>
-      {#if work.url}
-        <a
-          href={work.url}
-          target="_blank"
-          class="
-            px-4 py-2 hover:px-5 hover:py-3 hover:border-light-color hover:border-4
-            transition-all duration-300
-            bg-primary-light rounded-lg font-bold uppercase
-          "
-        >
-          {texts[$lang].work.url}
-        </a>
-      {/if}
-      <section in:blur={{ duration: 300, delay: 250, amount: 20 }} class="flex gap-2">
-        {#each work.skills as skill}
-          <Skill kind={skill} />
-        {/each}
-      </section>
-    </div>
-  {:else}
+  >
+    <WorkLogo {work} />
+    <h2 class="ubuntu text-3xl px-4 sm:text-3xl font-bold text-light-color text-center">
+      {work.title}
+    </h2>
     <section class="sm:flex gap-2 hidden">
       {#each work.skills ?? [] as skill}
-        <Skill kind={skill} />
+        <span class="h-[35px] w-[35px] p-0.5 bg-light-color rounded-full dark:bg-dark-color">
+          <Skill kind={skill} />
+        </span>
       {/each}
     </section>
-  {/if}
-</article>
+  </article>
+{/if}

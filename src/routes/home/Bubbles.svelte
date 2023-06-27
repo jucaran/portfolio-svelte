@@ -28,8 +28,6 @@
         dy: mobile ? canvas.height / 400 : 4
       }
 
-      console.log(pinkBubble.dx)
-
       const blueBubble = {
         x: canvas.width - 150,
         y: canvas.height - 200,
