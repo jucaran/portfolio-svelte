@@ -49,7 +49,8 @@
 </script>
 
 <svelte:head>
-  <title>Juan Castro Arancibia | {texts[$lang]?.contact.title}</title>
+  <title>Juan Castro Arancibia | {texts[$lang]?.contact.meta.title}</title>
+  <meta name="description" content={texts[$lang]?.contact.meta.description}>
 </svelte:head>
 
 <main

@@ -26,6 +26,7 @@
 
 <svelte:head>
   <title>Juan Castro Arancibia | {texts[$lang]?.work.title}</title>
+  <meta name="description" content={texts[$lang]?.work.description}>
 </svelte:head>
 
 <Columns />

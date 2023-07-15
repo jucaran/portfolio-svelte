@@ -5,8 +5,8 @@
 </script>
 
 <svelte:head>
-  <title>Juan Castro Arancibia | Software Engineer UX/UI Designer</title>
-  <meta name="description" content={texts[$lang]?.meta.description}>
+  <title>Juan Castro Arancibia | {texts[$lang]?.home.meta.title}</title>
+  <meta name="description" content={texts[$lang]?.home.meta.description}>
 </svelte:head>
 
 <!-- Home content -->
@@ -61,7 +61,7 @@
         mb-4 sm:mb-8
         "
       >
-        UX/UI Designer | Software developer
+        {texts[$lang]?.home.meta.title}
       </h3>
     </div>
     <p
